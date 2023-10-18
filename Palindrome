@@ -1,0 +1,24 @@
+def make_palindrome(s):
+    # Function to check if a string is a palindrome
+    def is_palindrome(string):
+        return string == string[::-1]
+
+    n = len(s)
+    for i in range(n):
+        if is_palindrome(s[i:]):
+            # If the substring from i to the end is already a palindrome,
+            # we need to add characters from the beginning of the string
+            to_add = s[:i][::-1]
+            return s + to_add
+
+    # If the entire string is already a palindrome, we can simply return it
+    return s
+
+# Read input lines until EOF is encountered
+try:
+    while True:
+        line = input()
+        result = make_palindrome(line)
+        print(result)
+except EOFError:
+    pass
